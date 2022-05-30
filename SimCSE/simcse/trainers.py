@@ -47,6 +47,10 @@ from transformers.trainer_pt_utils import (
     reissue_pt_warnings,
 )
 
+# from transformers.trainer_utils import (
+#     seed_worker,
+# )
+
 from transformers.utils import logging
 from transformers.data.data_collator import DataCollator, DataCollatorWithPadding, default_data_collator
 import torch
@@ -242,7 +246,7 @@ class CLTrainer(Trainer):
             # Maybe delete some older checkpoints.
             if self.is_world_process_zero():
                 self._rotate_checkpoints(use_mtime=True)
-    
+        
     def train(self, model_path: Optional[str] = None, trial: Union["optuna.Trial", Dict[str, Any]] = None):
         """
         Main training entry point.
@@ -286,7 +290,7 @@ class CLTrainer(Trainer):
         # number of training steps per epoch: num_update_steps_per_epoch
         # total number of training steps to execute: max_steps
         if train_dataset_is_sized:
-            num_update_steps_per_epoch = len(train_dataloader) // self.args.gradient_accumulation_steps -1 # 수정
+            num_update_steps_per_epoch = len(train_dataloader) // self.args.gradient_accumulation_steps 
             num_update_steps_per_epoch = max(num_update_steps_per_epoch, 1)
             if self.args.max_steps > 0:
                 max_steps = self.args.max_steps

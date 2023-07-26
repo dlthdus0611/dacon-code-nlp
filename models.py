@@ -1,3 +1,25 @@
+# MIT License
+
+# Copyright (c) 2021 Jeong Ukjae
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 import torch
 from torch import nn
 from transformers.configuration_utils import PretrainedConfig
@@ -67,16 +89,7 @@ class RobertaModel(RobertaPreTrainedModel):
         for layer, heads in heads_to_prune.items():
             self.encoder.layer[layer].attention.prune_heads(heads)
 
-    def forward(
-        self,
-        x
-        # input_ids: torch.Tensor = None,
-        # attention_mask: torch.Tensor = None,
-        # token_type_ids: torch.Tensor = None,
-        # position_ids: torch.Tensor = None,
-        # output_attentions: bool = None,
-        # output_hidden_states: bool = None
-    ):
+    def forward(self, x):
         input_ids, attention_mask, token_type_ids = x
         position_ids, output_attentions, output_hidden_states = None, None, None
 
@@ -111,9 +124,7 @@ class RobertaModel(RobertaPreTrainedModel):
 
         return {
                 'last_hidden_state': sequence_output,
-                'pooler_output': pooled_output,
-                # 'hidden_states': encoder_outputs.hidden_states,
-                # 'attentions': encoder_outputs.attentions,
+                'pooler_output': pooled_output
                }
 
 class RobertaModelForSimCSE(RobertaModel):

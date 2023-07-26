@@ -10,7 +10,6 @@ import torch.nn as nn
 from tqdm import tqdm
 import torch.optim as optim
 from sklearn.metrics import f1_score
-from transformers.optimization import get_cosine_schedule_with_warmup, get_linear_schedule_with_warmup
 
 from data_modules import *
 

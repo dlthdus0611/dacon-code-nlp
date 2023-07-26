@@ -3,7 +3,7 @@
 results/
 
 # data fold
-data/
+*.csv
 
 # etc
 __pycache__/

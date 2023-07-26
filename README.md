@@ -15,22 +15,23 @@ This repository is the solution for [DACON Code similarity judgment AI contest.]
 - torch==1.8.0 with cuda 11.1
 - torch_optimizer
 
-
 ## Make Dataset
+Before training, prepare the dataset for training and evaluation. It conducts preprocessing for raw code data and split in the train, dev, test set.
+
 ```python
 python data/prepro.py
 ```
 
 ## Training
-### Supervised
 ```python
-sh train.sh
+python main.py
 
-#1 Supervised
-python main.py --ver=sup --initial_lr=4e-5 --batch_size=8 --exp_num=sim_sup
-
-#2 Unsupervised
-python main.py --ver=unsup --initial_lr=3e-5 --batch_size=8 --exp_num=sim_unsup
+Arguments:
+    --ver : SimCSE version for training (default:unsup)
+    --initial_lr : initial learning rate (default:3e-5)
+    --epoch : the number of epoch
+    --batch_siz : the number of batch
+    --exp_num : experiment number
 ```
 
 ## References

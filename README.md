@@ -22,6 +22,8 @@ python ./data/prepro.py
 ```
 
 ## Training
+You can refer to the details provided in `config.py`, which includes training settings.
+
 ```python
 python main.py
 

@@ -2,8 +2,7 @@
 This repository is the solution for [DACON Code similarity judgment AI contest.](https://dacon.io/competitions/official/235900/overview/description)
 
 ## Overview
-- contrastive learning 기법인 SimCSE를 기반으로 코드 유사성 판단을 위한 embedding space를 구축하고자 함.
-- Supervised / Unsupervised 기반의 SimSCE를 수행하여 BERT를 학습하고, test set을 기반으로 평가함.
+We want to construct an embedding space for code similarity using the [SimCSE (Simple Contrastive Learning of Sentence Embeddings)](https://arxiv.org/pdf/2104.08821.pdf) technique based on contrastive learning. The goal is to train **CodeBERT** using both Supervised and Unsupervised SimCSE methods and then evaluate it on the test set.
 
 ## Requirements
 - Ubuntu 18.04, Cuda 11.1
